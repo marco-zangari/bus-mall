@@ -2,6 +2,7 @@
 
 var imageChooserList = [];
 var lastThree = [];
+var imagePath = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.png', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/chair.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.png', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/usb.gif', 'img/water-can.jpg', 'img/wine-glass.jpg'];
 
 function ImageChooser (name, filePath, id) {
     this.name = name;
@@ -22,10 +23,19 @@ function ImageChooser (name, filePath, id) {
       imagePutter.innerHTML = ' ';
       var imageOne = document.createElement('img');
       imagePutter.appendChild(imageOne);
+      imageOne.setAttribute('src', imagePath[random]);
+      };
 
-      imageOne.setAttribute('src', bag.filePath)
+      var renderTwoImages = function () {
+        var random = setRandom();
+        var imagePutter = document.getElementById('imageTwo');
+        imagePutter.innerHTML = ' ';
+        var imageTwo = document.createElement('img');
+        imagePutter.appendChild(imageTwo);
+        imageTwo.setAttribute('src', imagePath[random]);
+      };
 
-    };
+
 
     var bag = new ImageChooser('a bag','img/bag.jpg', 'bag');
     var banana = new ImageChooser('a banana','img/banana.jpg', 'banana');
@@ -49,3 +59,4 @@ function ImageChooser (name, filePath, id) {
     var wineGlass = new ImageChooser('a wine glass', 'img/wine-glass.jpg', 'wineGlass');
 
 renderOneImage();
+renderTwoImages();
