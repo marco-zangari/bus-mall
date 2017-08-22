@@ -1,8 +1,6 @@
 'use strict';
 
-var ImageRandomizer = function () {
-
-};
+var items = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'chthulhu', 'dogDuck', 'dragon', 'pen', 'petSweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'waterCan', 'wineGlass'];
 
 function ImageChooser (name, filePath, numDisplayed, numClicked, textString) {
     this.name = name;
@@ -11,11 +9,23 @@ function ImageChooser (name, filePath, numDisplayed, numClicked, textString) {
     this.numClicked = numClicked;
     this.textString = textString;
 
-  var ImageRandomizer = function () {
-    
-  },
 
+  this.setChooser = function () {
+    for (var i = 0; i < 3; i++) {
+      var randomElement = Math.floor(Math.random() * items.length - 1);
+      console.log(randomElement);
+    }
+    
+  };
 };
+
+  this.setSequesterChosen = function () {
+
+  };
+
+  this.setSequesterShown = function () {
+
+  };
 
 var bag = new ImageChooser(bag,'img/bag.jpg', 0,0);
 var banana = new ImageChooser(banana,'img/banana.jpg', 0, 0);
@@ -38,9 +48,4 @@ var usb = new ImageChooser(usb, 'img/usb.gif', 0, 0);
 var waterCan = new ImageChooser(waterCan, 'img/water-can.jpg', 0, 0);
 var wineGlass = new ImageChooser(wineGlass, 'img/wine-glass.jpg', 0, 0);
 
-
-
-
-totalClicks
-percentageClicks
-totalDisplay
+bag.setChooser();
