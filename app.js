@@ -33,9 +33,14 @@ function ImageChooser (name, filePath, id) {
         var imageTwo = document.createElement('img');
         imagePutter.appendChild(imageTwo);
         imageTwo.setAttribute('src', imagePath[random]);
-      };
 
 
+      while (imageOne === imageTwo || lastTwoArray.includes(imageTwo)) {
+        imageTwo.setAttribute('src', imagePath[random]);
+          }
+        };
+
+    var lastTwoArray = [imageOne, imageTwo];
 
     var bag = new ImageChooser('a bag','img/bag.jpg', 'bag');
     var banana = new ImageChooser('a banana','img/banana.jpg', 'banana');
