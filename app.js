@@ -24,7 +24,10 @@ function ImageChooser (name, filePath, id) {
       var imageOne = document.createElement('img');
       imagePutter.appendChild(imageOne);
       imageOne.setAttribute('src', imagePath[random]);
-      };
+      while (lastThreeArray.includes(imageOne)){
+          imageOne.setAttribute('src', imagePath[random]);
+          }
+        };
 
       var renderTwoImages = function () {
         var random = setRandom();
@@ -47,7 +50,7 @@ function ImageChooser (name, filePath, id) {
         var imageThree = document.createElement('img');
         imagePutter.appendChild(imageThree);
         imageThree.setAttribute('src', imagePath[random]);
-        while (imageThree === imageTwo || lastThreeArray.includes(imageOne)) {
+        while (imageThree === imageTwo || lastThreeArray.includes(imageThree)) {
             imageThree.setAttribute('src', imagePath[random]);
           }
         };
@@ -77,3 +80,4 @@ function ImageChooser (name, filePath, id) {
 
 renderOneImage();
 renderTwoImages();
+renderThreeImages();
