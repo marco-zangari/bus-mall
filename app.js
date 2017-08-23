@@ -27,6 +27,8 @@ var usb = new ImageChooser('the usb', 'img/usb.gif', 'usb');
 var waterCan = new ImageChooser('a water can', 'img/water-can.jpg', 'waterCan');
 var wineGlass = new ImageChooser('a wine glass', 'img/wine-glass.jpg', 'wineGlass');
 
+var pageClicked = 0;
+
 function ImageChooser (name, filePath, id) {
   this.name = name;
   this.filePath = filePath;
@@ -39,43 +41,6 @@ function ImageChooser (name, filePath, id) {
 function setRandom () {
   return Math.floor(Math.random() * imageChooserList.length);
 };
-
-// var renderOneImage = function () {
-//   var random = setRandom();
-//   var imagePutter = document.getElementById('imageOne');
-//   imagePutter.innerHTML = ' ';
-//   var imageOne = document.createElement('img');
-//   imagePutter.appendChild(imageOne);
-//   imageOne.setAttribute('src', imagePath[random]);
-//   while (lastThreeArray.includes(imageOne)){
-//     imageOne.setAttribute('src', imagePath[random]);
-//   }
-// };
-//
-// var renderTwoImages = function () {
-//   var random = setRandom();
-//   var imagePutter = document.getElementById('imageTwo');
-//   imagePutter.innerHTML = ' ';
-//   var imageTwo = document.createElement('img');
-//   imagePutter.appendChild(imageTwo);
-//   imageTwo.setAttribute('src', imagePath[random]);
-//
-//   // while (imageOne === imageTwo || lastThreeArray.includes(imageTwo)) {
-//   //   imageTwo.setAttribute('src', imagePath[random]);
-//   // }
-// };
-//
-// var renderThreeImages = function () {
-//   var random = setRandom();
-//   var imagePutter = document.getElementById('imageThree');
-//   imagePutter.innerHTML = ' ';
-//   var imageThree = document.createElement('img');
-//   imagePutter.appendChild(imageThree);
-//   imageThree.setAttribute('src', imagePath[random]);
-  // while (imageThree === imageTwo || lastThreeArray.includes(imageThree)) {
-  //   imageThree.setAttribute('src', imagePath[random]);
-  // }
-// };
 
 function renderThreeImages () {
   var random = setRandom();
@@ -91,7 +56,5 @@ function renderThreeImages () {
   }
   lastThree = currentThree;
 };
-
-// var lastThree = [imageOne, imageTwo, imageThree];
 
 renderThreeImages();
