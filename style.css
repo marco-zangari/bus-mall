@@ -8,7 +8,28 @@
 
 .lower-nav {
   font-family: 'Playfair Display', serif;
+}
 
+.image-area {
+  width: 75%;
+  height: 175px;
+  overflow: auto;
+}
+
+img {
+  width: 10em;
+  height: 10em;
+  float: left;
+}
+
+
+#imageOne, #imageTwo, #imageThree {
+  width: 10em;
+  height: 25em;
+  background-color: pewter;
+  float: left;
+  overflow: auto;
+  margin: auto;
 }
 
 font-family: 'Lobster', cursive;
