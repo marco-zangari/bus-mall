@@ -2,6 +2,7 @@
 
 var imageChooserList = [];
 var lastThree = [];
+var currentThree = [];
 var imagePath = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/chair.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.png', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/usb.gif', 'img/water-can.jpg', 'img/wine-glass.jpg'];
 
 function ImageChooser (name, filePath, id) {
@@ -24,9 +25,9 @@ var renderOneImage = function () {
   var imageOne = document.createElement('img');
   imagePutter.appendChild(imageOne);
   imageOne.setAttribute('src', imagePath[random]);
-  while (lastThreeArray.includes(imageOne)){
-    imageOne.setAttribute('src', imagePath[random]);
-  }
+  // while (lastThreeArray.includes(imageOne)){
+  //   imageOne.setAttribute('src', imagePath[random]);
+  // }
 };
 
 var renderTwoImages = function () {
@@ -37,9 +38,9 @@ var renderTwoImages = function () {
   imagePutter.appendChild(imageTwo);
   imageTwo.setAttribute('src', imagePath[random]);
 
-  while (imageOne === imageTwo || lastThreeArray.includes(imageTwo)) {
-    imageTwo.setAttribute('src', imagePath[random]);
-  }
+  // while (imageOne === imageTwo || lastThreeArray.includes(imageTwo)) {
+  //   imageTwo.setAttribute('src', imagePath[random]);
+  // }
 };
 
 var renderThreeImages = function () {
@@ -49,9 +50,9 @@ var renderThreeImages = function () {
   var imageThree = document.createElement('img');
   imagePutter.appendChild(imageThree);
   imageThree.setAttribute('src', imagePath[random]);
-  while (imageThree === imageTwo || lastThreeArray.includes(imageThree)) {
-    imageThree.setAttribute('src', imagePath[random]);
-  }
+  // while (imageThree === imageTwo || lastThreeArray.includes(imageThree)) {
+  //   imageThree.setAttribute('src', imagePath[random]);
+  // }
 };
 
 var lastThreeArray = [imageOne, imageTwo, imageThree];
