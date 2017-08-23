@@ -11,25 +11,31 @@
 }
 
 .image-area {
-  width: 80%;
+  width: 75%;
   height: auto;
   overflow: auto;
 }
 
 #imageOne {
-  width: 40%;
+  width: 25%;
   height: auto;
   float: left;
   overflow: auto;
 }
 
 #imageTwo {
-  width: 40%;
+  width: 25%;
   height: auto;
   float: left;
   overflow: auto;
 }
 
+#imageThree {
+  width: 25%;
+  height: auto;
+  float: left;
+  overflow: auto;
+}
 font-family: 'Lobster', cursive;
 
 font-family: 'EB Garamond', serif;
