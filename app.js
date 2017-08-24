@@ -42,19 +42,28 @@ function setRandom () {
   return Math.floor(Math.random() * imageChooserList.length);
 };
 
+var productImage = document.getElementsByClassName('product-image');
+
 function renderThreeImages () {
   var random = setRandom();
+  currentThree = [];
   for (var i = 0; i < idArray.length; i++) {
     while (currentThree.includes(imagePath[random]) || lastThree.includes(imagePath[random])) {
       random = setRandom();
     }
-    var imagePutter = document.getElementById(idArray[i]);
-    var image = document.createElement('img');
-    image.setAttribute('src', imagePath[random]);
-    imagePutter.appendChild(image);
+    productImage[i].setAttribute('src', imagePath[random]);
     currentThree.push(imagePath[random]);
   }
   lastThree = currentThree;
 };
 
 renderThreeImages();
+
+function clickCounter () {
+  pageClicked++;
+  renderThreeImages();
+};
+
+for (var i = 0; i < idArray.length; i++) {
+  productImage[i].addEventListener('click', clickCounter);
+}
