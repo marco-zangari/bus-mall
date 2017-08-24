@@ -59,7 +59,9 @@ function renderThreeImages () {
 
 renderThreeImages();
 
-function clickCounter () {
+function clickCounter (event) {
+  console.log(event);
+  var itemIdx = parseInt(event.target.getAttribute('itemIdx'));
   pageClicked++;
   renderThreeImages();
 };
