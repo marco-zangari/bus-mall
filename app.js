@@ -65,18 +65,11 @@ function clickCounter (event) {
   var itemIdx = parseInt(event.target.getAttribute('itemIdx'));
   pageClicked++;
   renderThreeImages();
-};
-
-for (var i = 0; i < idArray.length; i++) {
-  productImage[i].addEventListener('click', clickCounter);
-}
-
-function stopThatImageNow (){
   if (pageClicked < clickerCutOff) {
-    if(event.target.id == image-one) {
+    if(event.target.id === 'image-one') {
       var index = lastThree[0];
       imageChooserList[index].numClicked++;
-    } else if(event.target.id == image-two) {
+    } else if(event.target.id === 'image-two') {
       var index = lastThree[1];
       imageChooserList[index].numClicked++;
     } else {
@@ -87,8 +80,15 @@ function stopThatImageNow (){
   } else {
     var myChart = new Chart(ctx, chartConfig);
   }
-};
-stopThatImageNow();
+  };
+
+for (var i = 0; i < idArray.length; i++) {
+  productImage[i].addEventListener('click', clickCounter);
+}
+
+// function stopThatImageNow (){
+
+// stopThatImageNow();
 
 
 var chartConfig = {
