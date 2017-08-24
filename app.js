@@ -1,5 +1,6 @@
 'use strict';
 
+var clickerCutOff = 3;
 var imageChooserList = [];
 var lastThree = [];
 var currentThree = [];
@@ -48,11 +49,11 @@ function renderThreeImages () {
   var random = setRandom();
   currentThree = [];
   for (var i = 0; i < idArray.length; i++) {
-    while (currentThree.includes(imagePath[random]) || lastThree.includes(imagePath[random])) {
+    while (currentThree.includes(random) || lastThree.includes(random)) {
       random = setRandom();
     }
-    productImage[i].setAttribute('src', imagePath[random]);
-    currentThree.push(imagePath[random]);
+    productImage[i].setAttribute('src', imageChooserList[random].filePath);
+    currentThree.push(random);
   }
   lastThree = currentThree;
 };
@@ -69,3 +70,11 @@ function clickCounter (event) {
 for (var i = 0; i < idArray.length; i++) {
   productImage[i].addEventListener('click', clickCounter);
 }
+
+function stopThatImageNow (){
+  if (clicks != clickerCutOff) {
+    if(event.target.id == image-one){
+      get
+    }
+  }
+};
