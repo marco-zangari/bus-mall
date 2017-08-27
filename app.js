@@ -1,6 +1,6 @@
 'use strict';
-
-var clickerCutOff = 3;
+var pageClicked = 0;
+var maxClick = 3;
 var imageChooserList = [];
 var lastThree = [];
 var currentThree = [];
@@ -28,7 +28,9 @@ var usb = new ImageChooser('the usb', 'img/usb.gif', 'usb');
 var waterCan = new ImageChooser('a water can', 'img/water-can.jpg', 'waterCan');
 var wineGlass = new ImageChooser('a wine glass', 'img/wine-glass.jpg', 'wineGlass');
 
-var pageClicked = 0;
+if (localStorage.getItem('clicks')){
+  var countedClicks = JSON.parse(localStorage.getItem('clicks'));
+}
 
 function ImageChooser (name, filePath, id) {
   this.name = name;
@@ -45,7 +47,7 @@ function setRandom () {
 
 var productImage = document.getElementsByClassName('product-image');
 
-function renderThreeImages () {
+function renderThreeImages(){
   var random = setRandom();
   currentThree = [];
   for (var i = 0; i < idArray.length; i++) {
@@ -54,33 +56,46 @@ function renderThreeImages () {
     }
     productImage[i].setAttribute('src', imageChooserList[random].filePath);
     currentThree.push(random);
-  }
+    }
   lastThree = currentThree;
-};
 
+  for (var i = 0; i < document.getElementsByClassName('clickable').length; i++) {
+  var image = document.getElementById('image-' + (i + 1));
+  image.addEventListener('click', onClick);
+  }
+};
 renderThreeImages();
 
-function clickCounter (event) {
-  console.log(event);
+function onClickEvent(event) {
   var itemIdx = parseInt(event.target.getAttribute('itemIdx'));
-  pageClicked++;
+  var userChoice = imageChooserList[itemIdx];
+  userChoice.pageClicked++;
+  event.preventDefault();
   renderThreeImages();
-  if (pageClicked < clickerCutOff) {
-    if(event.target.id === 'image-one') {
-      var index = lastThree[0];
-      imageChooserList[index].numClicked++;
-    } else if(event.target.id === 'image-two') {
-      var index = lastThree[1];
-      imageChooserList[index].numClicked++;
-    } else {
-      var index = lastThree[2];
-      imageChooserList[index].numClicked++;
-    }
-    pageClicked++;
-  } else {
+  maxClick++;
+
+  if (pageClicked === maxClick) {
+      for (var i = 0; i < document.getElementsByClassName('clickable').length; i++) {
+
+        document.getElementsByClassName('clickable').lei]
+      }
+
+    //   var index = lastThree[0];
+    //   imageChooserList[index].numClicked++;
+    // } else if(event.target.id === 'image-two') {
+    //   var index = lastThree[1];
+    //   imageChooserList[index].numClicked++;
+    // } else {
+    //   var index = lastThree[2];
+    //   imageChooserList[index].numClicked++;
+    // }
+    //   pageClicked++;
+    // } else {
+
     var myChart = new Chart(ctx, chartConfig);
-  }
-  };
+    }
+};
+// clickCounter();
 
 for (var i = 0; i < idArray.length; i++) {
   productImage[i].addEventListener('click', clickCounter);
