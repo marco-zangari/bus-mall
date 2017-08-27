@@ -1,6 +1,9 @@
 'use strict';
+
+var shownImages = [];
+var clickedImages = [];
 var imageClicked = 0;
-var maxClick = 3;
+var maxClick = 25;
 var imageChooserList = [];
 var lastThree = [];
 var currentThree = [];
@@ -52,6 +55,7 @@ function renderThreeImages(){
       random = setRandom();
     }
     productImage[i].setAttribute('src', imageChooserList[random].filePath);
+    shownImages.push(imageChooserList[random].filePath);
     productImage[i].id = imageChooserList[random].id;
     imageChooserList[random].numDisplayed++;
     currentThree.push(random);
@@ -64,21 +68,68 @@ function renderThreeImages(){
 renderThreeImages();
 
 function onClickEvent(event) {
+  console.log(event.target);
   for (var i = 0; i < imageChooserList.length; i++) {
     if (imageChooserList[i].id === event.target.id && imageClicked < maxClick) {
         imageChooserList[i].numClicked++;
+        clickedImages.push(event.target.src);
         imageClicked++;
         renderThreeImages();
     } else if (imageClicked === maxClick) {
-      // var productAreaTwo = document.getElementById('product-area');
       productArea.removeEventListener('click', this.OnClickEvent);
       productArea.innerHTML = ' ';
+
+      localStorage.setItem('clickedImages',JSON.stringify(clickedImages));
+      localStorage.setItem('shownImages',JSON.stringify(shownImages));
       }
     }
   };
 
+// working here on the local storage
 
-    var myChart = new Chart(ctx, chartConfig);
+function localStorageHas(name){
+  if(localStorage.getItem('names')){
+    return true;
+  }else{
+    return false;
+  }
+};
+
+// get the list that will hold all the names
+var list = document.getElementById('name-list');
+
+// if I have something in localStorage with key of "names", do some stuff
+if (localStorageHas('names')) {
+  // take the value for "names" in localStorage and use JSON.parse to turn it into something else (like an array, or object, or whatever)
+  for (var i = 0; i < nameArray.length; i++) {
+    var li = document.createElement('li');
+    li.innerText = nameArray[i];
+    list.appendChild(li);
+  }
+  // if there is nothing in localStorage with key of "names", do something else
+}
+
+var form = document.getElementById('form');
+console.log(form);
+form.addEventListener('submit', addNameToList);
+
+function addNameToList(event){
+  event.preventDefault();
+  var theInput = form.elements.aField.value;
+  var li = document.createElement('li');
+  li.innerText = theInput;
+  list.appendChild(li);
+
+  nameArray.push(theInput);
+  console.log(nameArray);
+  localStorage.setItem('names', JSON.stringify(nameArray));
+  form.reset();
+}
+
+
+
+
+    // var myChart = new Chart(ctx, chartConfig);
 
 
 // clickCounter();
