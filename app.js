@@ -57,50 +57,26 @@ function renderThreeImages(){
     currentThree.push(random);
     }
   lastThree = currentThree;
-
-  for (var i = 0; i < document.getElementsByClassName('clickable').length; i++) {
-    var image = document.getElementById('image-' + (i + 1));
-    image.addEventListener('click', onClickEvent);
-  }
 };
+  var productArea = document.getElementById('product-area');
+  productArea.addEventListener('click', onClickEvent);
+
 renderThreeImages();
 
 function onClickEvent(event) {
   for (var i = 0; i < imageChooserList.length; i++) {
-    if (imageChooserList[i].id === event.target.id) {
+    if (imageChooserList[i].id === event.target.id && imageClicked < maxClick) {
         imageChooserList[i].numClicked++;
         imageClicked++;
+        renderThreeImages();
+    } else if (imageClicked === maxClick) {
+      // var productAreaTwo = document.getElementById('product-area');
+      productArea.removeEventListener('click', this.OnClickEvent);
+      productArea.innerHTML = ' ';
+      }
     }
   };
 
-  numClicked.imageClicked++;
-  event.preventDefault();
-  renderThreeImages();
-  maxClick++;
-
-  if (imageClicked === maxClick) {
-    for (var i = 0; i < document.getElementsByClassName('clickable').length; i++) {
-      var image = document.getElementById('image-' + (i +1));
-      image.removeEventListener('click', OnClickEvent);
-        }
-        for (var i = 0; i < imageChooserList.length; i++) {
-          countedClicks.push(imageChooserList[i].timesClicked);
-        }
-      }
-  };
-
-
-    //   var index = lastThree[0];
-    //   imageChooserList[index].numClicked++;
-    // } else if(event.target.id === 'image-two') {
-    //   var index = lastThree[1];
-    //   imageChooserList[index].numClicked++;
-    // } else {
-    //   var index = lastThree[2];
-    //   imageChooserList[index].numClicked++;
-    // }
-    //   pageClicked++;
-    // } else {
 
     var myChart = new Chart(ctx, chartConfig);
 
