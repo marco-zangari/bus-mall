@@ -84,9 +84,6 @@ function onClickEvent(event) {
       }
     }
   };
-
-// working here on the local storage
-
 function localStorageHas(name){
   if(localStorage.getItem('names')){
     return true;
