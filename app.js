@@ -52,6 +52,8 @@ function randomImageChooser (){
       i--;
     } else {
     imageChooserList[random].filePath === imagePath[random];
+    imageChooserList[random].numDisplayed === shownImages++;
+    imageChooserList[random].numClicked === clickedImages++;
     currentThree.push(imagePath[random]);
     }
   }
@@ -62,7 +64,7 @@ randomImageChooser();
 var productImage = document.getElementsByClassName('product-image');
 
 function imageRender () {
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < currentThree.length; i++) {
   var imgSpot = document.
 
 }   productImage[i].setAttribute('src', imageChooserList[random].filePath);
