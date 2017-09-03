@@ -44,8 +44,6 @@ function setRandom () {
   return Math.floor(Math.random() * (imageChooserList.length));
 };
 
-var productImage = document.getElementsByClassName('product-image');
-
 function randomImageChooser (){
   currentThree = [];
   for (var i = 0; i < 3; i++) {
@@ -53,14 +51,26 @@ function randomImageChooser (){
     if (currentThree.includes(random) || lastThree.includes(random)) {
       i--;
     } else {
-    productImage[i].setAttribute('src', imageChooserList[random].filePath);
+    imageChooserList[random].filePath === imagePath[random];
+    currentThree.push(imagePath[random]);
+    }
+  }
+  lastThree = currentThree;
+};
+randomImageChooser();
+
+var productImage = document.getElementsByClassName('product-image');
+
+function imageRender () {
+for (var i = 0; i < 3; i++) {
+  var imgSpot = document.
+
+}   productImage[i].setAttribute('src', imageChooserList[random].filePath);
     shownImages.push(imageChooserList[random].filePath);
     productImage[i].id = imageChooserList[random].id;
     imageChooserList[random].numDisplayed++;
     currentThree.push(random);
-  }
-  lastThree = currentThree;
-};
+
 // var productArea = document.getElementById('product-area');
 // productArea.addEventListener('click', onClickEvent);
 var imageOne = document.getElementById('imageOne');
@@ -69,13 +79,6 @@ var imageTwo = document.getElementById('imageTwo');
 imageTwo.addEventListener('click', onClickEvent);
 var imageThree = document.getElementById('imageThree');
 imageThree.addEventListener('click', onClickEvent);
-
-
-randomImageChooser();
-
-function imageRender (){
-  
-}
 
 function onClickEvent(event) {
   for (var i = 0; i < imageChooserList.length; i++) {
