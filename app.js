@@ -31,7 +31,6 @@ var usb = new ImageChooser('the usb', 'img/usb.gif', 'usb');
 var waterCan = new ImageChooser('a water can', 'img/water-can.jpg', 'waterCan');
 var wineGlass = new ImageChooser('a wine glass', 'img/wine-glass.jpg', 'wineGlass');
 
-
 function ImageChooser (name, filePath, id) {
   this.name = name;
   this.filePath = filePath;
@@ -42,7 +41,7 @@ function ImageChooser (name, filePath, id) {
 };
 
 function setRandom () {
-  return Math.floor(Math.random() * imageChooserList.length);
+  return Math.floor(Math.random() * (imageChooserList.length));
 };
 
 var productImage = document.getElementsByClassName('product-image');
@@ -59,11 +58,11 @@ function renderThreeImages(){
     productImage[i].id = imageChooserList[random].id;
     imageChooserList[random].numDisplayed++;
     currentThree.push(random);
-    }
+  }
   lastThree = currentThree;
 };
-  var productArea = document.getElementById('product-area');
-  productArea.addEventListener('click', onClickEvent);
+var productArea = document.getElementById('product-area');
+productArea.addEventListener('click', onClickEvent);
 
 renderThreeImages();
 
@@ -71,19 +70,19 @@ function onClickEvent(event) {
   console.log(event.target);
   for (var i = 0; i < imageChooserList.length; i++) {
     if (imageChooserList[i].id === event.target.id && imageClicked < maxClick) {
-        imageChooserList[i].numClicked++;
-        clickedImages.push(event.target.src);
-        imageClicked++;
-        renderThreeImages();
+      imageChooserList[i].numClicked++;
+      clickedImages.push(event.target.src);
+      imageClicked++;
+      renderThreeImages();
     } else if (imageClicked === maxClick) {
       productArea.removeEventListener('click', this.OnClickEvent);
       productArea.innerHTML = ' ';
 
       localStorage.setItem('clickedImages',JSON.stringify(clickedImages));
       localStorage.setItem('shownImages',JSON.stringify(shownImages));
-      }
     }
-  };
+  }
+};
 function localStorageHas(name){
   if(localStorage.getItem('names')){
     return true;
@@ -123,12 +122,7 @@ function addNameToList(event){
   form.reset();
 }
 
-
-
-
     // var myChart = new Chart(ctx, chartConfig);
-
-
 // clickCounter();
 
 for (var i = 0; i < idArray.length; i++) {
@@ -138,7 +132,6 @@ for (var i = 0; i < idArray.length; i++) {
 // function stopThatImageNow (){
 
 // stopThatImageNow();
-
 
 // var chartConfig = {
 //
