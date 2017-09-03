@@ -51,10 +51,10 @@ function randomImageChooser (){
     if (currentThree.includes(random) || lastThree.includes(random)) {
       i--;
     } else {
-    imageChooserList[random].filePath === imagePath[random];
-    imageChooserList[random].numDisplayed === shownImages++;
-    imageChooserList[random].numClicked === clickedImages++;
-    currentThree.push(imagePath[random]);
+      imageChooserList[random].filePath === imagePath[random];
+      imageChooserList[random].numDisplayed === shownImages++;
+      imageChooserList[random].numClicked === clickedImages++;
+      currentThree.push(imagePath[random]);
     }
   }
   lastThree = currentThree;
@@ -64,14 +64,21 @@ randomImageChooser();
 var productImage = document.getElementsByClassName('product-image');
 
 function imageRender () {
-for (var i = 0; i < currentThree.length; i++) {
-  var imgSpot = document.
+  for (var i = 0; i < currentThree.length; i++) {
+    var image1Spot = document.getElementById('image1');
+    image1Spot.setAttribute('src', currentThree[0]);
+    var image2Spot = document.getElementById('image2');
+    image2Spot.setAttribute('src', currentThree[1]);
+    var image3Spot = document.getElementById('image3');
+    image3Spot.setAttribute('src', currentThree[2]);
+  }
+};
+imageRender();
 
-}   productImage[i].setAttribute('src', imageChooserList[random].filePath);
-    shownImages.push(imageChooserList[random].filePath);
-    productImage[i].id = imageChooserList[random].id;
-    imageChooserList[random].numDisplayed++;
-    currentThree.push(random);
+// productImage[i].setAttribute('src', imageChooserList[random].filePath);
+//     shownImages.push(imageChooserList[random].filePath);
+//     productImage[i].id = imageChooserList[random].id;
+//     imageChooserList[random].numDisplayed++;
 
 // var productArea = document.getElementById('product-area');
 // productArea.addEventListener('click', onClickEvent);
