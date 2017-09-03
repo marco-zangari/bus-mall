@@ -17,7 +17,7 @@ var boots = new ImageChooser('the boots', 'img/boots.jpg', 'boots');
 var breakfast = new ImageChooser('a breakfast', 'img/breakfast.jpg', 'breakfast');
 var bubblegum = new ImageChooser('the bubblegum', 'img/bubblegum.jpg', 'bubblegum');
 var chair = new ImageChooser('a chair', 'img/chair.jpg', 'chair');
-var cthulhu = new ImageChooser('the cthulhu', 'img/chair.jpg', 'cthulhu');
+var cthulhu = new ImageChooser('the cthulhu', 'img/cthulhu.jpg', 'cthulhu');
 var dogDuck = new ImageChooser('a dog duck', 'img/dog-duck.jpg', 'dogDuck');
 var dragon = new ImageChooser('a dragon', 'img/dragon.jpg', 'dragon');
 var pen = new ImageChooser('a pen', 'img/pen.jpg', 'pen');
@@ -46,13 +46,13 @@ function setRandom () {
 
 var productImage = document.getElementsByClassName('product-image');
 
-function renderThreeImages(){
-  var random = setRandom();
+function randomImageChooser (){
   currentThree = [];
-  for (var i = 0; i < idArray.length; i++) {
-    while (currentThree.includes(random) || lastThree.includes(random)) {
-      random = setRandom();
-    }
+  for (var i = 0; i < 3; i++) {
+    var random = setRandom();
+    if (currentThree.includes(random) || lastThree.includes(random)) {
+      i--;
+    } else {
     productImage[i].setAttribute('src', imageChooserList[random].filePath);
     shownImages.push(imageChooserList[random].filePath);
     productImage[i].id = imageChooserList[random].id;
@@ -61,13 +61,23 @@ function renderThreeImages(){
   }
   lastThree = currentThree;
 };
-var productArea = document.getElementById('product-area');
-productArea.addEventListener('click', onClickEvent);
+// var productArea = document.getElementById('product-area');
+// productArea.addEventListener('click', onClickEvent);
+var imageOne = document.getElementById('imageOne');
+imageOne.addEventListener('click', onClickEvent);
+var imageTwo = document.getElementById('imageTwo');
+imageTwo.addEventListener('click', onClickEvent);
+var imageThree = document.getElementById('imageThree');
+imageThree.addEventListener('click', onClickEvent);
 
-renderThreeImages();
+
+randomImageChooser();
+
+function imageRender (){
+  
+}
 
 function onClickEvent(event) {
-  console.log(event.target);
   for (var i = 0; i < imageChooserList.length; i++) {
     if (imageChooserList[i].id === event.target.id && imageClicked < maxClick) {
       imageChooserList[i].numClicked++;
@@ -75,9 +85,11 @@ function onClickEvent(event) {
       imageClicked++;
       renderThreeImages();
     } else if (imageClicked === maxClick) {
-      productArea.removeEventListener('click', this.OnClickEvent);
-      productArea.innerHTML = ' ';
-
+      imageOne.removeEventListener('click', this.onClickEvent);
+      imageOne.innerHTML = ' ';
+      imageTwo.removeEventListener('click', this.onClickEvent);
+      imageTwo.innerHTML = ' ';
+      imageThree.removeEventListener('click', this.onClickEvent);
       localStorage.setItem('clickedImages',JSON.stringify(clickedImages));
       localStorage.setItem('shownImages',JSON.stringify(shownImages));
     }
