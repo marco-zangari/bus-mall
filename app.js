@@ -56,6 +56,7 @@ function randomImageChooser (){
     } else {
       imageChooserList[random].filePath === imagePath[random];
       imageChooserList[random].numDisplayed++;
+
       currentThree.push(imagePath[random]);
     }
   }
@@ -83,12 +84,12 @@ function imageRender () {
 imageRender();
 
 function onClickEvent(event) {
+  console.log('loop is dope');
+  imageClicked++;
   for (var j = 0; j < numberOfImages; j++) {
     if (imageChooserList[j].filePath === currentThree[2] && imageClicked < maxClick) {
       imageNumberTimesClicked[j]++;
       clickedImages.push(imageChooserList[j].filePath);
-      console.log('loop is dope');
-      imageClicked++;
       randomImageChooser();
       imageRender();
     } else if (imageClicked === maxClick) {
