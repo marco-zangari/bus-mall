@@ -81,7 +81,7 @@ imageRender();
 
 function onClickEvent(event) {
   for (var i = 0; i < imageChooserList.length; i++) {
-    if (imageChooserList[i].filePath === event.target.src.imagePath && imageClicked < maxClick) {
+    if (imageChooserList[i].filePath === currentThree[3] && imageClicked < maxClick) {
       imageChooserList[i].numClicked[i]++;
       clickedImages.push(event.target.src);
       imageClicked++;
@@ -96,7 +96,7 @@ function onClickEvent(event) {
       image3Spot.removeEventListener('click', onClickEvent);
       localStorage.setItem('clickedImages',JSON.stringify(clickedImages));
       localStorage.setItem('shownImages',JSON.stringify(shownImages));
-    }
+    } else {}
   }
 };
 onClickEvent();
