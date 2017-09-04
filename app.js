@@ -51,12 +51,11 @@ function randomImageChooser (){
   currentThree = [];
   for (var i = 0; i < 3; i++) {
     var random = setRandom();
-    if (currentThree.includes(random) || lastThree.includes(random)) {
+    if (currentThree.includes(imagePath[random]) || lastThree.includes(imagePath[random])) {
       i--;
     } else {
-      imageChooserList[random].filePath === imagePath[random];
+      imageChooserList[random].filePath = imagePath[random];
       imageChooserList[random].numDisplayed++;
-
       currentThree.push(imagePath[random]);
     }
   }
@@ -84,7 +83,6 @@ function imageRender () {
 imageRender();
 
 function onClickEvent(event) {
-  console.log('loop is dope');
   imageClicked++;
   for (var j = 0; j < numberOfImages; j++) {
     if (imageChooserList[j].filePath === currentThree[2] && imageClicked < maxClick) {
