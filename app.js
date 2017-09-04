@@ -63,10 +63,6 @@ function randomImageChooser (){
 };
 randomImageChooser();
 
-// var imageClickTrackerOne = document.getElementById('image1');
-// var imageClickTrackerTwo = document.getElementById('image2');
-// var imageClickTracterThree = document.getElementById('image3');
-
 function imageRender () {
   for (var i = 0; i < currentThree.length; i++) {
     var image1Spot = document.getElementById('image1');
@@ -124,7 +120,7 @@ function onClickEventTwo(event) {
 };
 onClickEventTwo();
 
-function onClickEvent(event) {
+function onClickEventThree(event) {
   imageClicked++;
   for (var j = 0; j < numberOfImages; j++) {
     if (imageChooserList[j].filePath === currentThree[2] && imageClicked < maxClick) {
