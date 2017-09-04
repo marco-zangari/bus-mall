@@ -5,10 +5,12 @@ var clickedImages = [];
 var imageClicked = 0;
 var maxClick = 25;
 var imageChooserList = [];
+var numberOfImages = 0;
 var lastThree = [];
 var currentThree = [];
 var idArray = ['image-1', 'image-2', 'image-3'];
 var imagePath = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/chair.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.png', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/usb.gif', 'img/water-can.jpg', 'img/wine-glass.jpg'];
+var imageNumberTimesClicked = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 var bag = new ImageChooser('a bag','img/bag.jpg', 'bag');
 var banana = new ImageChooser('a banana','img/banana.jpg', 'banana');
@@ -38,6 +40,7 @@ function ImageChooser (name, filePath, id) {
   this.numDisplayed = 0;
   this.numClicked = 0;
   imageChooserList.push(this);
+  numberOfImages = imageChooserList.length;
 };
 
 function setRandom () {
@@ -80,13 +83,13 @@ function imageRender () {
 imageRender();
 
 function onClickEvent(event) {
-  for (var i = 0; i < imageChooserList.length; i++) {
-    if (imageChooserList[i].filePath === currentThree[3] && imageClicked < maxClick) {
-      imageChooserList[i].numClicked[i]++;
-      clickedImages.push(event.target.src);
+  for (var j = 0; j < numberOfImages; j++) {
+    if (imageChooserList[j].filePath === currentThree[2] && imageClicked < maxClick) {
+      imageNumberTimesClicked[j]++;
+      clickedImages.push(imageChooserList[j].filePath);
+      console.log('loop is dope');
       imageClicked++;
-      event.target.innerHTML = ' ';
-      imageChooser();
+      randomImageChooser();
       imageRender();
     } else if (imageClicked === maxClick) {
       image1Spot.removeEventListener('click', onClickEvent);
