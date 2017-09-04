@@ -71,37 +71,82 @@ function imageRender () {
   for (var i = 0; i < currentThree.length; i++) {
     var image1Spot = document.getElementById('image1');
     image1Spot.setAttribute('src', currentThree[0]);
-    image1Spot.addEventListener('click', onClickEvent);
+    image1Spot.addEventListener('click', onClickEventOne);
     var image2Spot = document.getElementById('image2');
     image2Spot.setAttribute('src', currentThree[1]);
-    image2Spot.addEventListener('click', onClickEvent);
+    image2Spot.addEventListener('click', onClickEventTwo);
     var image3Spot = document.getElementById('image3');
     image3Spot.setAttribute('src', currentThree[2]);
-    image3Spot.addEventListener('click', onClickEvent);
+    image3Spot.addEventListener('click', onClickEventThree);
   }
 };
 imageRender();
+
+function onClickEventOne(event) {
+  imageClicked++;
+  for (var j = 0; j < numberOfImages; j++) {
+    if (imageChooserList[j].filePath === currentThree[0] && imageClicked < maxClick) {
+      imageNumberTimesClicked[j]++;
+      clickedImages.push(currentThree[0]);
+    } else if (imageClicked === maxClick) {
+      image1Spot.removeEventListener('click', onClickEventOne);
+      image1Spot.innerHTML = ' ';
+      image2Spot.removeEventListener('click', onClickEventTwo);
+      image2Spot.innerHTML = ' ';
+      image3Spot.removeEventListener('click', onClickEventThree);
+      localStorage.setItem('clickedImages',JSON.stringify(clickedImages));
+      localStorage.setItem('shownImages',JSON.stringify(shownImages));
+    } else {}
+  }
+  randomImageChooser();
+  imageRender();
+};
+onClickEventOne();
+
+function onClickEventTwo(event) {
+  imageClicked++;
+  for (var j = 0; j < numberOfImages; j++) {
+    if (imageChooserList[j].filePath === currentThree[1] && imageClicked < maxClick) {
+      imageNumberTimesClicked[j]++;
+      clickedImages.push(currentThree[1]);
+    } else if (imageClicked === maxClick) {
+      image1Spot.removeEventListener('click', onClickEventOne);
+      image1Spot.innerHTML = ' ';
+      image2Spot.removeEventListener('click', onClickEventTwo);
+      image2Spot.innerHTML = ' ';
+      image3Spot.removeEventListener('click', onClickEventThree);
+      localStorage.setItem('clickedImages',JSON.stringify(clickedImages));
+      localStorage.setItem('shownImages',JSON.stringify(shownImages));
+    } else {}
+  }
+  randomImageChooser();
+  imageRender();
+};
+onClickEventTwo();
 
 function onClickEvent(event) {
   imageClicked++;
   for (var j = 0; j < numberOfImages; j++) {
     if (imageChooserList[j].filePath === currentThree[2] && imageClicked < maxClick) {
       imageNumberTimesClicked[j]++;
-      clickedImages.push(imageChooserList[j].filePath);
-      randomImageChooser();
-      imageRender();
+      clickedImages.push(currentThree[2]);
     } else if (imageClicked === maxClick) {
-      image1Spot.removeEventListener('click', onClickEvent);
+      image1Spot.removeEventListener('click', onClickEventOne);
       image1Spot.innerHTML = ' ';
-      image2Spot.removeEventListener('click', onClickEvent);
+      image2Spot.removeEventListener('click', onClickEventTwo);
       image2Spot.innerHTML = ' ';
-      image3Spot.removeEventListener('click', onClickEvent);
+      image3Spot.removeEventListener('click', onClickEventThree);
       localStorage.setItem('clickedImages',JSON.stringify(clickedImages));
       localStorage.setItem('shownImages',JSON.stringify(shownImages));
     } else {}
   }
+  randomImageChooser();
+  imageRender();
 };
-onClickEvent();
+onClickEventThree();
+
+clickedImages = [];
+imageClicked = 0;
 
 function localStorageHas(name){
   if(localStorage.getItem('names')){
